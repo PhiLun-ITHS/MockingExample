@@ -1,2 +1,8 @@
-package PACKAGE_NAME;public class Calculator {
+public class Calculator {
+
+    int add(String numbers){
+
+        return 0;
+    }
+
 }

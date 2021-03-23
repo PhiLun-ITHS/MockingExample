@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class CalculatorTest {
+public class CalculatorTest {
+
+    Calculator calc = new Calculator();
+
+
 }

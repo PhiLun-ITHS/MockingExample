@@ -28,4 +28,10 @@ class CalculatorTest {
     void twoNumbers() {
         assertEquals(calculator.add("1, 2"), 3);
     }
+
+    @Test
+    void multipleNumbers() {
+        assertEquals(calculator.add("1, 2, 3"), 6);
+    }
+
 }

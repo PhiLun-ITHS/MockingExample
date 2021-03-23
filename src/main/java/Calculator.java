@@ -1,7 +1,7 @@
 public class Calculator {
 
     int add(String numbers) {
-        String[] listOfNumbers = numbers.split(", ");
+        String[] listOfNumbers = numbers.split(",|\n");
 
         if (numbers.isEmpty()) {
             return 0;

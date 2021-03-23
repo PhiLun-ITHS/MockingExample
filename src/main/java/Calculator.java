@@ -1,7 +1,7 @@
 public class Calculator {
 
     int add(String numbers) {
-        String[] listOfNumbers = numbers.split(",|\n");
+        String[] listOfNumbers = numbers.split(", |\n|,");
 
         if (numbers.isEmpty()) {
             return 0;
@@ -13,8 +13,8 @@ public class Calculator {
 
         } else if (listOfNumbers.length > 2) {
             int total = 0;
-            for (int i = 0; i < listOfNumbers.length; i++) {
-                total = total + Integer.parseInt(listOfNumbers[i]);
+            for (String listOfNumber : listOfNumbers) {
+                total = total + Integer.parseInt(listOfNumber);
             }
             return total;
         }

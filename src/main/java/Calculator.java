@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Calculator {
@@ -15,16 +16,24 @@ public class Calculator {
                 negativeNumber.add(listOfNumber);
             }
         }
+
+        List<String> numbers2 = new ArrayList();
+        for (String num2 : listOfNumbers) {
+            numbers2.add(num2);
+
+        }
+        numbers2.removeIf(n -> Integer.parseInt(n) > 1000);
+
         if (negativeNumber.size() > 0) {
             throw new RuntimeException("negatives not allowed" + " " + negativeNumber);
 
-        } else if (listOfNumbers.length == 1) {
+        } else if (numbers2.size() == 1) {
             return Integer.parseInt(numbers);
 
-        } else if (listOfNumbers.length == 2) {
+        } else if (numbers2.size() == 2) {
             return Integer.parseInt(listOfNumbers[0]) + Integer.parseInt(listOfNumbers[1]);
 
-        } else if (listOfNumbers.length > 2) {
+        } else if (numbers2.size() > 2) {
             int total = 0;
             for (String listOfNumber2 : listOfNumbers) {
                 total = total + Integer.parseInt(listOfNumber2);

@@ -45,4 +45,9 @@ class CalculatorTest {
                     calculator.add("2, -4, 2");
                 });
     }
+
+    @Test
+    void shouldIgnoreNumbersAbove1000() {
+        assertEquals(calculator.add("4, 5, 2000"), 9);
+    }
 }

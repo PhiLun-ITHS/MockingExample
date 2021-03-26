@@ -55,4 +55,10 @@ class CalculatorTest {
     void shouldReturnSumOfNumbersWithOtherDelimiters () {
         assertEquals(calculator.add("..;;1, ///...;;;2,**[]****3"), 6);
     }
+
+    @Test
+    void shouldReturnSumOfNumbersWithOtherDelimiters2 () {
+        assertEquals(calculator.add("//[delim1][delim2]\\n"), 3);
+    }
+
 }

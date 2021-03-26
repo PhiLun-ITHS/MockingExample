@@ -50,4 +50,9 @@ class CalculatorTest {
     void shouldIgnoreNumbersAbove1000() {
         assertEquals(calculator.add("4, 5, 2000"), 9);
     }
+
+    @Test
+    void shouldReturnSumOfNumbersWithOtherDelimiters () {
+        assertEquals(calculator.add("..;;1, ///...;;;2,**[]****3"), 6);
+    }
 }

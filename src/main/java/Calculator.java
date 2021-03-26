@@ -4,12 +4,20 @@ import java.util.List;
 
 public class Calculator {
 
+
+
     int add(String numbers) {
+
+        numbers = handleCustomDelimiters(numbers);
+
+        //String[] listOfNumbers = numbers.split(" , ");
+
         String[] listOfNumbers = numbers.split(", |\n|//\n|//;| ;|,");
 
         if (numbers.isEmpty()) {
             return 0;
         }
+
         List<String> negativeNumber = new ArrayList<>();
         for (String listOfNumber : listOfNumbers) {
             if (Integer.parseInt(listOfNumber) < 0) {
@@ -20,7 +28,6 @@ public class Calculator {
         List<String> numbers2 = new ArrayList();
         for (String num2 : listOfNumbers) {
             numbers2.add(num2);
-
         }
         numbers2.removeIf(n -> Integer.parseInt(n) > 1000);
 
@@ -41,5 +48,21 @@ public class Calculator {
             return total;
         }
         return 1244312;
+    }
+
+    private String handleCustomDelimiters(String s) {
+        StringBuilder builder = new StringBuilder();
+        boolean skip = false;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c) || c == '-') {
+                skip = true;
+                builder.append(c);
+            } else if (skip) {
+                skip = false;
+                builder.append(",");
+            }
+        }
+        return builder.toString();
     }
 }

@@ -44,7 +44,7 @@ class CalculatorTest {
     void shouldThrowRuntimeExceptionWhenNegativeNumberAdded() {
         assertThrows(RuntimeException.class,
                 () -> {
-                    calculator.add("2, -5, 2");
+                    calculator.add("2, -4, 2");
                 });
     }
 
@@ -54,12 +54,12 @@ class CalculatorTest {
     }
 
     @Test
-    void shouldReturnSumOfNumbersWithOtherDelimiters () {
+    void shouldReturnSumOfNumbersWithOtherDelimiters() {
         assertEquals(calculator.add("..;;1, ///...;;;2,**[]****3"), 6);
     }
 
     @Test
-    void shouldReturnSumOfNumbersWithOtherDelimiters2 () {
+    void shouldReturnSumOfNumbersWithOtherDelimiters2() {
         assertEquals(calculator.add("//[delim1][delim2]\\n"), 3);
     }
 }

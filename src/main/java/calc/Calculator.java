@@ -1,58 +1,47 @@
 package calc;
 
+import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Calculator {
 
 
-
-    int add(String numbers) {
+    public int add(String numbers) {
 
         numbers = handleCustomDelimiters(numbers);
-
-        //String[] listOfNumbers = numbers.split(" , ");
-
         String[] listOfNumbers = numbers.split(", |\n|//\n|//;| ;|,");
 
-        if (numbers.isEmpty()) {
-            return 0;
-        }
+        List<String> numList = new ArrayList<>();
+        List<String> negativeList = new ArrayList<>();
 
-        List<String> negativeNumber = new ArrayList<>();
-        for (String listOfNumber : listOfNumbers) {
-            if (Integer.parseInt(listOfNumber) < 0) {
-                negativeNumber.add(listOfNumber);
+        for (String num : listOfNumbers) {
+            if (Integer.parseInt(num) < 0) {
+                negativeList.add(num);
+            } else if (Integer.parseInt(num) >= 0) {
+                numList.add(num);
             }
         }
+        numList.removeIf(a -> Integer.parseInt(a) > 1000);
 
-        List<String> numbers2 = new ArrayList();
-        for (String num2 : listOfNumbers) {
-            numbers2.add(num2);
+        if (negativeList.size() > 0) {
+            throw new RuntimeException("negatives not allowed" + " " + negativeList);
         }
-        numbers2.removeIf(n -> Integer.parseInt(n) > 1000);
 
-        if (negativeNumber.size() > 0) {
-            throw new RuntimeException("negatives not allowed" + " " + negativeNumber);
-
-        } else if (numbers2.size() == 1) {
-            return Integer.parseInt(numbers);
-
-        } else if (numbers2.size() == 2) {
-            return Integer.parseInt(listOfNumbers[0]) + Integer.parseInt(listOfNumbers[1]);
-
-        } else if (numbers2.size() > 2) {
+        else if (numList.size() > 0){
             int total = 0;
-            for (String listOfNumber2 : listOfNumbers) {
-                total = total + Integer.parseInt(listOfNumber2);
+            for (String num : numList) {
+                total = total + Integer.parseInt(num);
             }
             return total;
         }
-        return 1244312;
+        return 5555;
     }
 
     private String handleCustomDelimiters(String s) {
+        if (s.isEmpty()){
+            return String.valueOf(0);
+        }
         StringBuilder builder = new StringBuilder();
         boolean skip = false;
         for (int i = 0; i < s.length(); i++) {

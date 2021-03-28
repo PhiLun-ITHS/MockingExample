@@ -1,6 +1,5 @@
 package calc;
 
-import calc.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -45,7 +44,7 @@ class CalculatorTest {
     void shouldThrowRuntimeExceptionWhenNegativeNumberAdded() {
         assertThrows(RuntimeException.class,
                 () -> {
-                    calculator.add("2, -4, 2");
+                    calculator.add("2, -5, 2");
                 });
     }
 
